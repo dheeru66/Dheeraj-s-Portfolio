@@ -37,17 +37,21 @@ header {
   width: 100%;
   z-index: 1000;
   box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+}
+
+nav.container {
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  flex-wrap: wrap; /* allows stacking */
+  justify-content: space-between;
+  position: relative;
 }
 
 .logo {
-  font-size: 2.2rem;
+  font-size: 2.0rem;
   font-weight: 700;
   color: #66fcf1;
-  letter-spacing: 2px;
+  letter-spacing: 1px;
+  flex-shrink: 0;
 }
 
 nav ul {
@@ -67,6 +71,44 @@ nav ul li a {
   font-size: 1.1rem;
   font-weight: 500;
   transition: color 0.3s;
+}
+
+nav ul li a:hover {
+  color: #66fcf1;
+}
+
+/* Hamburger Menu Styles */
+.hamburger {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  width: 30px;
+  height: 30px;
+  position: relative;
+}
+
+.hamburger .bar {
+  display: block;
+  width: 25px;
+  height: 3px;
+  background: #66fcf1;
+  margin: 5px 0;
+  transition: 0.3s;
+  border-radius: 3px;
+}
+
+.hamburger.active .bar:nth-child(1) {
+  transform: rotate(-45deg) translate(-5px, 6px);
+}
+
+.hamburger.active .bar:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger.active .bar:nth-child(3) {
+  transform: rotate(45deg) translate(-5px, -6px);
 }
 
 /* Hero Section */
@@ -128,7 +170,7 @@ nav ul li a {
 }
 
 .hero-headline {
-  margin-top:140px;
+  margin-top:80px;
   font-size: 1.3rem;
   margin-bottom: 25px;
   color: #fff;
@@ -640,6 +682,41 @@ section.visible {
 .skill-card:hover {
   transform: translateY(-8px) scale(1.04);
   box-shadow: 0 8px 32px #ffcb0555;
+}
+
+/* Mobile Navigation */
+@media (max-width: 768px) {
+  .hamburger {
+    display: block;
+  }
+  
+  nav ul {
+    position: fixed;
+    left: -100%;
+    top: 80px;
+    flex-direction: column;
+    background: rgba(31, 40, 51, 0.95);
+    width: 100%;
+    text-align: center;
+    transition: 0.3s;
+    backdrop-filter: blur(10px);
+    border-top: 1px solid rgba(102, 252, 241, 0.2);
+    padding: 20px 0;
+  }
+  
+  nav ul.active {
+    left: 0;
+  }
+  
+  nav ul li {
+    display: block;
+    margin: 15px 0;
+    text-align: center;
+  }
+  
+  nav ul li a {
+    font-size: 1.2rem;
+  }
 }
 
 @media (max-width: 900px) {
